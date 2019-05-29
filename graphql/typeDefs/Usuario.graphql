@@ -1,0 +1,45 @@
+type Usuario {
+  id: ID
+  usuario: String! 
+  password: String!
+  tipo: TipoUsuario!
+  nombre:String
+  apellidos:String
+  genero:String
+  labora:String #Escuela donde Labora
+  programas:String # programas donde participa
+  curp:String
+}
+input UsuarioInput {
+  id: ID
+  usuario: String!
+  password: String!
+  tipo: TipoUsuario!
+  nombre:String
+  apellidos:String
+  genero:String
+  labora:String
+  programas:String
+  curp:String
+}
+
+# Tipos de usuario
+enum TipoUsuario {
+  ADMINISTRADOR
+  INVESTIGADOR
+  VISITANTE
+}
+
+# Consultas del Modelo Usuario
+type Query {
+  getUsuarios: [Usuario]
+  getUsuario(id: ID!): Usuario
+  totalUsuarios: String
+}
+
+# Mutaciones del Modelo Usuarios
+type Mutation {
+  addUser(input: UsuarioInput): Usuario
+  modUser(input: UsuarioInput): Usuario
+  deleteUser(id: ID): String
+}

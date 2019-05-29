@@ -1,0 +1,69 @@
+type Publicacion {
+  # CODIGO DE LA INVESTIGACION O CODIGO DEL TRABAJO
+  id:ID
+  # NOMBRE DE LA INVESTIGACION O TITULO DEL TRABAJO
+  titulo:String
+  # TIPO DE PUBLICACIÒN
+  tipo:TipoPublicacion
+  # DATOS PUBLICACION
+  datos:String
+  # AREA DE INVESTIGACION
+  area:String
+  # CAMPO DE INVESTIGACION
+  campo:String
+  # INTENSIDAD
+  intensidad:String
+  # PAIS
+  pais:String
+  # ENTIDAD DE MEXICO
+  entidad:String
+  # INSTITUCION
+  institucion:String
+  # PROGRAMAS DE POSGRADO EN EDUCACION
+  programasPosgrado:String
+  # LIGA DE LA INVESTIGACION
+  url:String
+  # AUTOR DE LA INVESTIGACION
+  # autor: Usuario
+}
+
+input PublicacionInput {
+id:ID
+titulo:String
+tipo:TipoPublicacion
+datos:String
+area:String
+campo:String
+intensidad:String
+pais:String
+entidad:String
+institucion:String
+programasPosgrado:String
+url:String
+# autor: Usuario
+}
+
+# Tipos de Publicacion
+enum TipoPublicacion {
+  ARTICULO
+  CAPITULO
+  PONENCIA
+  CONFERENCIA
+  LIBRO
+  TESIS_DOCTORADO
+  TESIS_MAESTRIA
+}
+
+# Consultas del Modelo Publicacion
+type Query {
+  getPublicaciones: [Publicacion]
+  totalPublicaciones: String
+  getPublicacion(id: ID!): Publicacion
+}
+
+# Mutaciones del Modelo Publicacions
+type Mutation {
+  addPublicacion(input: PublicacionInput): Publicacion
+  modPublicacion(input: PublicacionInput): Publicacion
+  delPublicacion(id: ID): String
+}
